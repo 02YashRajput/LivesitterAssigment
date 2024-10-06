@@ -1,0 +1,10 @@
+.video-container {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.video-player {
+  width: 100%;
+  height: auto;
+}
