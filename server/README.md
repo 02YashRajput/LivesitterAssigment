@@ -80,7 +80,7 @@ The Overlay Management API provides the following endpoints for managing overlay
         "content": "str",
         "id": "str" 
     },
-    ...
+
 ]
 ```
 + Error (500):
