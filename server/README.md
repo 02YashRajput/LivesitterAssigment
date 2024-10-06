@@ -23,12 +23,12 @@ The Overlay Management API provides the following endpoints for managing overlay
 
 ```json
 {
-    "x": int,         // x-coordinate of the overlay
-    "y": int,         // y-coordinate of the overlay
-    "width": int,     // width of the overlay
-    "height": int,    // height of the overlay
-    "type": str,      // type of the overlay
-    "content": str    // content of the overlay
+    "x": int,         
+    "y": int,         
+    "width": int,
+    "height": int,    
+    "type": str,      
+    "content": str    
 }
 ```
 **Response:**
@@ -39,13 +39,13 @@ The Overlay Management API provides the following endpoints for managing overlay
 {
     "message": "Overlay created",
     "overlay": {
-        "x": int,
-        "y": int,
-        "width": int,
-        "height": int,
-        "type": str,
-        "content": str,
-        "id": "string" // ID of the created overlay
+        "x": <int>,
+        "y": <int>,
+        "width": <int>,
+        "height": <int>,
+        "type": <str>,
+        "content": <str>,
+        "id": "string" 
     }
 }
 
