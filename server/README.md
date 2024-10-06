@@ -23,12 +23,12 @@ The Overlay Management API provides the following endpoints for managing overlay
 
 ```json
 {
-    "x": int,         
-    "y": int,         
-    "width": int,
-    "height": int,    
-    "type": str,      
-    "content": str    
+    "x": "int",         // x-coordinate of the overlay
+    "y": "int",         // y-coordinate of the overlay
+    "width": "int",     // width of the overlay
+    "height": "int",    // height of the overlay
+    "type": "str",      // type of the overlay
+    "content": "str"    // content of the overlay
 }
 ```
 **Response:**
@@ -39,13 +39,13 @@ The Overlay Management API provides the following endpoints for managing overlay
 {
     "message": "Overlay created",
     "overlay": {
-        "x": <int>,
-        "y": <int>,
-        "width": <int>,
-        "height": <int>,
-        "type": <str>,
-        "content": <str>,
-        "id": "string" 
+        "x": "int",
+        "y": "int",
+        "width": "int",
+        "height": "int",
+        "type": "str",
+        "content": "str",
+        "id": "str" // ID of the created overlay
     }
 }
 
@@ -72,13 +72,13 @@ The Overlay Management API provides the following endpoints for managing overlay
 
 [
     {
-        "x": int,
-        "y": int,
-        "width": int,
-        "height": int,
-        "type": str,
-        "content": str,
-        "id": "string" // ID of the overlay
+        "x": "int",
+        "y": "int",
+        "width": "int",
+        "height": "int",
+        "type": "str",
+        "content": "str",
+        "id": "str" // ID of the overlay
     },
     ...
 ]
@@ -101,13 +101,13 @@ The Overlay Management API provides the following endpoints for managing overlay
 ```json
 
 {
-    "id": "string",    // ID of the overlay to update
-    "x": int,          // (optional) new x-coordinate
-    "y": int,          // (optional) new y-coordinate
-    "width": int,      // (optional) new width
-    "height": int,     // (optional) new height
-    "type": str,       // (optional) new type
-    "content": str     // (optional) new content
+    "id": "str",    // ID of the overlay to update
+    "x": "int",          // (optional) new x-coordinate
+    "y": "int",          // (optional) new y-coordinate
+    "width": "int",      // (optional) new width
+    "height": "int",     // (optional) new height
+    "type": "str",       // (optional) new type
+    "content": "str"    // (optional) new content
 }
 ```
 **Response:**
