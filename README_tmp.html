@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="user-documentation">User Documentation</h1>
+<h2 id="1-fork-and-clone-the-repository">1. Fork and Clone the Repository</h2>
+<ol>
+<li><strong>Fork the Repository</strong>:</li>
+</ol>
+<ul>
+<li>Go to the repository URL and click on the <strong>Fork</strong> button to create a copy under your GitHub account.</li>
+</ul>
+<ol start="2">
+<li><strong>Clone the Forked Repository</strong>:</li>
+</ol>
+<ul>
+<li>In your terminal, clone the repository to your local machine:</li>
+</ul>
+<pre class="hljs"><code><div>
+git <span class="hljs-built_in">clone</span> &lt;your-forked-repository-url&gt;
+
+</div></code></pre>
+<ol start="3">
+<li><strong>Navigate to the Project Directory</strong>:</li>
+</ol>
+<ul>
+<li>Change into the project directory:</li>
+</ul>
+<pre class="hljs"><code><div>
+<span class="hljs-built_in">cd</span> &lt;LivesitterAssigment&gt;
+
+</div></code></pre>
+<h2 id="2-set-up-the-client-react">2. Set Up the Client (React)</h2>
+<ol>
+<li><strong>Navigate to the Client Directory</strong>:</li>
+</ol>
+<pre class="hljs"><code><div>
+<span class="hljs-built_in">cd</span> client
+
+</div></code></pre>
+<ol start="2">
+<li><strong>Install Dependencies</strong>:</li>
+</ol>
+<pre class="hljs"><code><div>
+npm install
+
+</div></code></pre>
+<ol start="3">
+<li><strong>Start the Client</strong>:</li>
+</ol>
+<ul>
+<li>Run the following command to start the React development server:</li>
+</ul>
+<pre class="hljs"><code><div>
+npm start
+
+</div></code></pre>
+<ul>
+<li>The client will typically be available at <code>http://localhost:3000</code></li>
+</ul>
+<h2 id="3-set-up-the-server-flask">3. Set Up the Server (Flask)</h2>
+<ol>
+<li><strong>Navigate to the Server Directory</strong>:</li>
+</ol>
+<pre class="hljs"><code><div>
+<span class="hljs-built_in">cd</span> server
+
+</div></code></pre>
+<ol start="2">
+<li><strong>Create a Virtual Environment</strong>:</li>
+</ol>
+<pre class="hljs"><code><div>
+python -m venv venv
+
+</div></code></pre>
+<ol start="3">
+<li><strong>Activate the Virtual Environment</strong>:</li>
+</ol>
+<ul>
+<li>On macOS/Linux:</li>
+</ul>
+<pre class="hljs"><code><div>
+<span class="hljs-built_in">source</span> venv/bin/activate
+
+</div></code></pre>
+<ul>
+<li>On Windows:</li>
+</ul>
+<pre class="hljs"><code><div>
+venv\Scripts\activate
+
+</div></code></pre>
+<ol start="4">
+<li><strong>Install Python Dependencies</strong>:</li>
+</ol>
+<pre class="hljs"><code><div>
+pip install -r requirements.txt
+
+</div></code></pre>
+<ol start="5">
+<li><strong>Start the Server</strong>:</li>
+</ol>
+<ul>
+<li>Run the following command to start the Flask server:</li>
+</ul>
+<pre class="hljs"><code><div>
+python app.py
+
+</div></code></pre>
+<ul>
+<li>The server will typically run on <code>http://127.0.0.1:5000</code>.</li>
+</ul>
+<h2 id="4-inputting-the-rtsp-url-with-ffmpeg">4. Inputting the RTSP URL with <code>ffmpeg</code></h2>
+<p>To process an RTSP stream using <code>ffmpeg</code>, you can use the following command in your terminal:</p>
+<pre class="hljs"><code><div>ffmpeg -analyzeduration 10000000 -probesize 10000000 -i <span class="hljs-string">"rtsp://rtspstream:36db633d016c43cca6ab857176ae6417@zephyr.rtsp.stream/pattern"</span> \ -c:v copy -c:a aac -hls_time 10 -hls_list_size 0 -f hls static/output.m3u8
+</div></code></pre>
+<h3 id="explanation-of-the-command">Explanation of the Command:</h3>
+<ul>
+<li><code>-analyzeduration 10000000</code>: Sets the duration for analyzing the input stream (in microseconds).</li>
+<li><code>-probesize 10000000</code>: Sets the maximum size of the probe (in bytes) used to detect the input format.</li>
+<li><code>-i &quot;rtsp://...</code>: Specifies the RTSP URL for the input stream.</li>
+<li><code>-c:v copy</code>: Copies the video codec without re-encoding.</li>
+<li><code>-c:a aac</code>: Encodes the audio to AAC.</li>
+<li><code>-hls_time 10</code>: Sets the segment duration for HLS output to 10 seconds.</li>
+<li><code>-hls_list_size 0</code>: Sets the playlist size to unlimited.</li>
+<li><code>-f hls</code>: Specifies the output format as HLS.</li>
+<li><code>static/output.m3u8</code>: The output file where the HLS playlist will be saved.</li>
+</ul>
+<p>Make sure to replace the RTSP URL in the command with your desired stream URL before running the command.</p>
+<h2 id="5-manage-overlays-in-livestream-application">5. Manage Overlays in Livestream Application</h2>
+<p>This document provides an overview of managing overlays in the livestream application using React. The application allows users to add, edit, and delete overlays (text or images) that can be positioned and resized on a video stream.</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#components">Components</a>
+<ul>
+<li><a href="#app-component">App Component</a></li>
+<li><a href="#video-player-component">Video Player Component</a></li>
+<li><a href="#overlay-component">Overlay Component</a></li>
+</ul>
+</li>
+<li><a href="#state-management">State Management</a></li>
+<li><a href="#adding-overlays">Adding Overlays</a></li>
+<li><a href="#editing-overlays">Editing Overlays</a></li>
+<li><a href="#deleting-overlays">Deleting Overlays</a></li>
+<li><a href="#image-uploads">Image Uploads</a></li>
+<li><a href="#styling-overlays">Styling Overlays</a></li>
+<li><a href="#server-integration">Server Integration</a></li>
+</ol>
+<h3 id="introduction">Introduction</h3>
+<p>The application allows users to overlay text and images on a video stream. Users can interact with the overlays to move, resize, and delete them as needed.</p>
+<h3 id="components">Components</h3>
+<h4 id="app-component">App Component</h4>
+<p>The main component that handles the creation and management of overlays. It includes:</p>
+<ul>
+<li>State variables for managing overlays, input types, and content.</li>
+<li>Functions for adding, deleting, and fetching overlays from the server.</li>
+<li>A form for user input to create overlays.</li>
+</ul>
+<h5 id="key-functions">Key Functions</h5>
+<ul>
+<li><code>addOverlay()</code>: Adds a new overlay to the state and sends it to the server.</li>
+<li><code>onClose()</code>: Removes an overlay based on its index.</li>
+<li><code>handleImageUpload()</code>: Converts uploaded images to Base64 format.</li>
+</ul>
+<h4 id="video-player-component">Video Player Component</h4>
+<p>This component displays the video stream and renders the overlays on top of it, ensuring the overlays are correctly positioned and visible.</p>
+<h4 id="overlay-component">Overlay Component</h4>
+<p>This component represents individual overlays. It allows users to edit the content, move, and resize the overlays.</p>
+<h5 id="key-functions">Key Functions</h5>
+<ul>
+<li><code>setPositions()</code>: Updates the overlay's position when dragged.</li>
+<li><code>setSize()</code>: Updates the overlay's size when resized.</li>
+<li><code>handleInput()</code>: Manages input changes in editable overlays.</li>
+<li><code>updateOverlay()</code>: Sends updated overlay data to the server.</li>
+</ul>
+<h3 id="state-management">State Management</h3>
+<p>The application uses React's <code>useState</code> and <code>useEffect</code> hooks for state management. The <code>overlays</code> state holds the current overlays, while the <code>inputType</code> and <code>inputContent</code> states manage the input for new overlays.</p>
+<h3 id="adding-overlays">Adding Overlays</h3>
+<p>Users can add overlays by selecting the type (text or image) and entering the content. When an overlay is added, it is sent to the server via a POST request, and the state is updated.</p>
+<h3 id="editing-overlays">Editing Overlays</h3>
+<p>Overlays are editable via a content-editable div. Changes are captured in real-time, and updates are sent to the server after a delay when the user stops typing.</p>
+<h3 id="deleting-overlays">Deleting Overlays</h3>
+<p>Users can delete overlays using a close button on each overlay. This triggers a DELETE request to the server to remove the overlay from the database.</p>
+<h3 id="image-uploads">Image Uploads</h3>
+<p>Users can upload images to use as overlays. Uploaded images are converted to Base64 strings and stored in the overlay's content state.</p>
+<h3 id="styling-overlays">Styling Overlays</h3>
+<p>Overlays are styled using inline styles and CSS properties. The <code>Rnd</code> component from the <code>react-rnd</code> library allows for drag-and-drop functionality and resizing capabilities.</p>
+<h3 id="server-integration">Server Integration</h3>
+<p>The application communicates with a backend server via Axios for managing overlays. The following endpoints are used:</p>
+<ul>
+<li><strong>GET</strong> <code>/</code>: Fetch existing overlays.</li>
+<li><strong>POST</strong> <code>/</code>: Add a new overlay.</li>
+<li><strong>DELETE</strong> <code>/:id</code>: Remove an overlay by ID.</li>
+<li><strong>PUT</strong> <code>/</code>: Update overlay data.</li>
+</ul>
+
+</body>
+</html>

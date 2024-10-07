@@ -114,11 +114,11 @@ The Overlay Management API provides the following endpoints for managing overlay
     
     -   Success (200):
         
-       ```json
-       {
-        	"message": "Overlay updated"
-       }
-       ```
+        ```json
+        {
+                "message": "Overlay updated"
+        }
+        ```
 
     -   Error (400):
         
