@@ -1,5 +1,4 @@
-# Overlay Management API
-
+# API Documentation
 This API allows you to create, retrieve, update, and delete overlays in a MongoDB database. It is built with Flask and uses PyMongo to interact with MongoDB.
 
 ## Base URL
@@ -21,16 +20,16 @@ The Overlay Management API provides the following endpoints for managing overlay
 
 **Request Body:**
 
-```json
-{
-    "x": "int",         
-    "y": "int",         
-    "width": "int",     
-    "height": "int",    
-    "type": "str",      
-    "content": "str"    
-}
-```
+    ```json
+    {
+        "x": "int",         
+        "y": "int",         
+        "width": "int",     
+        "height": "int",    
+        "type": "str",      
+        "content": "str"    
+    }
+    ```
 **Response:**
 
 + Success (201):
