@@ -27,7 +27,7 @@
     ```bash
     cd client
     ```
-    
+
 2.  **Install Dependencies**:
     
 	   ``` bash
@@ -39,7 +39,7 @@
         
         ```bash
         npm start
-    ```
+        ```
   -   The client will typically be available at `http://localhost:3000`
  
  #### 3. Set Up the Server (Flask)
