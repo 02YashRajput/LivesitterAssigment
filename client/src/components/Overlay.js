@@ -144,13 +144,13 @@ const Overlay = ({ overlay, index, onClose, setOverlays }) => {
 
     return (
         <Rnd
-            style={{ backgroundColor: "rgba(0, 0, 0, 0.5)", position: "relative", padding: "10px" }} // Styling for the Rnd component
-            className="overlay" // CSS class for the overlay
+
             size={{ width: rnd.width, height: rnd.height }} // Set the size of the overlay
             position={{ x: rnd.x, y: rnd.y }} // Set the position of the overlay
             onDragStop={setPositions} // Handle drag stop
             onResizeStop={setSize} // Handle resize stop
         >
+            <div  style={{ backgroundColor: "rgba(0, 0, 0, 0.5)", position: "relative", padding: "10px" }}> 
             {rnd.type === "image" ? ( // Conditional rendering based on overlay type
                 <img
                     src={rnd.content} // Image source set to overlay content
@@ -203,6 +203,7 @@ const Overlay = ({ overlay, index, onClose, setOverlays }) => {
                     <MdOutlineEdit style={{ color: "white" }} /> {/* Plus icon for adding image */}
                 </button>
             )}
+            </div>
         </Rnd>
     );
 };

@@ -87,7 +87,7 @@ function App() {
             />
 
             {/* Overlay Controls */}
-            <div className="overlay-controls">
+            <form className="overlay-controls">
                 <select value={inputType} onChange={(e) => setInputType(e.target.value)}>
                     <option value="text">Text</option>
                     <option value="image">Image</option>
@@ -110,7 +110,7 @@ function App() {
                 )}
                 
                 <button onClick={addOverlay}>Add Overlay</button> {/* Button to add overlay */}
-            </div>
+            </form>
         </div>
     );
 }
