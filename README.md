@@ -35,7 +35,7 @@ git clone <your-forked-repository-url>
 
 ```bash
 
-cd <project-directory>
+cd <LivesitterAssigment>
 
 ```
 
