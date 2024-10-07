@@ -31,28 +31,20 @@ function App() {
     const onClose = async (i) => {
         try {
             // Send a DELETE request to remove the overlay by its unique id
-            await axios.delete(`http://127.0.0.1:5000/${overlays[i].id}`); // Adjust this URL to match your API
-            console.log(i);
+            await axios.delete(`http://127.0.0.1:5000/${overlays[i].id}`);
             // Filter out the removed overlay from the overlays array
             const newOverlays = overlays.filter((_, index) => i !== index);
-            console.log(newOverlays);
             setOverlays(newOverlays); // Update the state with the new overlays array
         } catch (err) {
             console.error('Error deleting overlay:', err);
         }
     };
 
-    // Effect to log the overlays state when it changes
-    useEffect(() => {
-        console.log(overlays);
-    }, [overlays]);
-
     // Effect to fetch existing overlays from the server on component mount
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const res = await axios.get("http://127.0.0.1:5000");
-                console.log(res.data);
                 setOverlays(res.data); // Update state with fetched overlays
             } catch (err) {
                 console.log(err);
@@ -75,16 +67,8 @@ function App() {
 
     // Render the component
     return (
-        <div className="App">
+        <div>
             <h1>Livestream with Draggable and Resizable Overlays</h1>
-            
-            {/* Video Player Component */}
-            <VideoPlayer 
-                rtspUrl="https://wv-cdn-00-00.wowza.com/72c348da-7ff8-4ca5-9af9-3adb8c792185/v-00f1ddac-f87d-4a26-b8c4-ddf72f1e0e66_original.mp4" 
-                overlays={overlays} 
-                setOverlays={setOverlays}  
-                onClose={onClose} 
-            />
 
             {/* Overlay Controls */}
             <form className="overlay-controls">
@@ -111,6 +95,14 @@ function App() {
                 
                 <button onClick={addOverlay}>Add Overlay</button> {/* Button to add overlay */}
             </form>
+
+            {/* Video Player Component */}
+            <VideoPlayer 
+                streamUrl="http://127.0.0.1:5000/stream" 
+                overlays={overlays} 
+                setOverlays={setOverlays}  
+                onClose={onClose} 
+            />
         </div>
     );
 }

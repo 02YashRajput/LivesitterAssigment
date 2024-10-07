@@ -1,4 +1,3 @@
-
 # API Documentation
 
 This API allows you to create, retrieve, update, and delete overlays in a MongoDB database. It is built with Flask and uses PyMongo to interact with MongoDB.
@@ -9,7 +8,7 @@ This API allows you to create, retrieve, update, and delete overlays in a MongoD
 
 ## Overview
 
-The Overlay Management API provides the following endpoints for managing overlays:
+The Overlay Management API provides the following endpoints for managing overlays and serving HLS streams:
 
 ### Endpoints
 
@@ -31,6 +30,7 @@ The Overlay Management API provides the following endpoints for managing overlay
     	"content": "str"
     } 
     ```
+
 -   **Response:**
     
     -   Success (201):
@@ -49,14 +49,14 @@ The Overlay Management API provides the following endpoints for managing overlay
         	}
         }
         ```
+
     -   Error (500):
         
-	       ``` json
-	       {
-	        	"error": "Error message describing the issue"
-	        }
-	     ```
-        
+        ```json
+        {
+        	"error": "Error message describing the issue"
+        }
+        ```
 
 #### 2. Get Overlays
 
@@ -81,6 +81,7 @@ The Overlay Management API provides the following endpoints for managing overlay
         	}
         ]
         ```
+
     -   Error (500):
         
         ```json
@@ -108,15 +109,17 @@ The Overlay Management API provides the following endpoints for managing overlay
     	"content": "str"
     }
     ```
+
 -   **Response:**
     
     -   Success (200):
         
-       ``` json
+       ```json
        {
         	"message": "Overlay updated"
        }
        ```
+
     -   Error (400):
         
         ```json
@@ -124,6 +127,7 @@ The Overlay Management API provides the following endpoints for managing overlay
         	"error": "Missing overlay ID"
         }
         ```
+
     -   Error (404):
         
         ```json
@@ -131,13 +135,14 @@ The Overlay Management API provides the following endpoints for managing overlay
         	"message": "No overlay found with that ID"
         }
         ```
+
     -   Error (500):
         
-	       ``` json
-	       {
-	        	"error": "Error message describing the issue"
-	       }
-	       ```
+        ```json
+        {
+        	"error": "Error message describing the issue"
+        }
+        ```
 
 #### 4. Delete Overlay
 
@@ -148,7 +153,7 @@ The Overlay Management API provides the following endpoints for managing overlay
 -   **Path Parameter:**
     
     `overlay_id`: ID of the overlay to delete.
-    
+
 -   **Response:**
     
     -   Success (200):
@@ -158,6 +163,7 @@ The Overlay Management API provides the following endpoints for managing overlay
         	"message": "Overlay deleted"
         }
         ```
+
     -   Error (400):
         
         ```json
@@ -165,11 +171,43 @@ The Overlay Management API provides the following endpoints for managing overlay
         	"error": "Missing overlay ID"
         } 
         ```
+
     -   Error (404):
         
-	       ``` json
-	       {
-	        	"message": "No overlay found with that ID"
-	        }
+        ```json
+        {
+        	"message": "No overlay found with that ID"
+        }
         ```
+
+#### 5. Serve HLS Stream
+
+**Endpoint:** `GET /stream`
+
+**Description:** Serves the HLS stream.
+
+-   **Response:**
+    -   Success (200):
+        
+        The HLS stream file (`output.m3u8`) will be served.
+
+#### 6. Redirect HLS Segment
+
+**Endpoint:** `GET /<path:filename>`
+
+**Description:** Redirects to the static directory for HLS segment files.
+
+-   **Response:**
+    
+    -   Success (302): Redirects to the corresponding static file.
+
+#### 7. Serve HLS Segment Files
+
+**Endpoint:** `GET /static/<path:filename>`
+
+**Description:** Serves HLS segment files (.ts).
+
+-   **Response:**
+    
+    -   Success (200): Serves the requested HLS segment file.
 
