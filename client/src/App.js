@@ -99,7 +99,7 @@ function App() {
 
             {/* Video Player Component */}
             <VideoPlayer 
-                streamUrl="https://rtsp.me/embed/f7KFiRDH/" 
+                streamUrl="https://rtsp.me/embed/D36tk9a3/" 
                 overlays={overlays} 
                 setOverlays={setOverlays}  
                 onClose={onClose} 
