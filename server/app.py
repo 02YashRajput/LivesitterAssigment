@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory,redirect
+from flask import Flask, request, jsonify
 from flask_pymongo import PyMongo
 from flask_cors import CORS
 import os
@@ -13,21 +13,6 @@ app.config["MONGO_URI"] = "mongodb://localhost:27017/livesitter"
 mongo = PyMongo(app)
 
 
-HLS_DIRECTORY = os.path.join(app.root_path, 'static')
-
-@app.route('/stream', methods=['GET'])
-def stream():
-    """Serve the HLS stream."""
-    return send_from_directory(HLS_DIRECTORY, 'output.m3u8')
-
-@app.route('/<path:filename>', methods=['GET'])
-def redirect_segments(filename):
-    return redirect(f'/static/{filename}', code=302)
-
-@app.route('/static/<path:filename>', methods=['GET'])
-def serve_hls_files(filename):
-    """Serve HLS segment files (.ts)."""
-    return send_from_directory(HLS_DIRECTORY, filename)
 
 @app.route('/', methods=['POST'])
 def create_overlay():
@@ -154,4 +139,4 @@ def delete_overlay(overlay_id):
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)  # Run the Flask application in debug mode
+    app.run(debug=True,port=5001)  # Run the Flask application in debug mode

@@ -85,7 +85,7 @@ const Overlay = ({ overlay, index, onClose, setOverlays }) => {
     // Function to update overlay data on the server
     const updateOverlay = async () => {
         try {
-            const response = await axios.put('http://127.0.0.1:5000/', {
+            const response = await axios.put('http://127.0.0.1:5001/', {
                 id: rnd.id,
                 x: rnd.x,
                 y: rnd.y,

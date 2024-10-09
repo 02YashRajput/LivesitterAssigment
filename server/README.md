@@ -180,34 +180,3 @@ The Overlay Management API provides the following endpoints for managing overlay
         }
         ```
 
-#### 5. Serve HLS Stream
-
-**Endpoint:** `GET /stream`
-
-**Description:** Serves the HLS stream.
-
--   **Response:**
-    -   Success (200):
-        
-        The HLS stream file (`output.m3u8`) will be served.
-
-#### 6. Redirect HLS Segment
-
-**Endpoint:** `GET /<path:filename>`
-
-**Description:** Redirects to the static directory for HLS segment files.
-
--   **Response:**
-    
-    -   Success (302): Redirects to the corresponding static file.
-
-#### 7. Serve HLS Segment Files
-
-**Endpoint:** `GET /static/<path:filename>`
-
-**Description:** Serves HLS segment files (.ts).
-
--   **Response:**
-    
-    -   Success (200): Serves the requested HLS segment file.
-

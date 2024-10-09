@@ -9,7 +9,8 @@ function App() {
     const [inputContent, setInputContent] = useState(''); // State to track the content of the overlay
 
     // Function to add a new overlay
-    const addOverlay = async () => {
+    const addOverlay = async (e) => {
+        e.preventDefault();
         const newOverlay = {
             type: inputType, // 'text' or 'image'
             content: inputContent, // Text content or image URL
@@ -20,7 +21,7 @@ function App() {
         };
 
         // Send a POST request to add the new overlay to the server
-        const res = await axios.post("http://127.0.0.1:5000/", newOverlay);
+        const res = await axios.post("http://127.0.0.1:5001/", newOverlay);
         
         // Update the overlays state with the new overlay
         setOverlays([...overlays, res.data.overlay]);
@@ -31,7 +32,7 @@ function App() {
     const onClose = async (i) => {
         try {
             // Send a DELETE request to remove the overlay by its unique id
-            await axios.delete(`http://127.0.0.1:5000/${overlays[i].id}`);
+            await axios.delete(`http://127.0.0.1:5001/${overlays[i].id}`);
             // Filter out the removed overlay from the overlays array
             const newOverlays = overlays.filter((_, index) => i !== index);
             setOverlays(newOverlays); // Update the state with the new overlays array
@@ -44,7 +45,7 @@ function App() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get("http://127.0.0.1:5000");
+                const res = await axios.get("http://127.0.0.1:5001");
                 setOverlays(res.data); // Update state with fetched overlays
             } catch (err) {
                 console.log(err);
@@ -98,7 +99,7 @@ function App() {
 
             {/* Video Player Component */}
             <VideoPlayer 
-                streamUrl="http://127.0.0.1:5000/stream" 
+                streamUrl="https://rtsp.me/embed/f7KFiRDH/" 
                 overlays={overlays} 
                 setOverlays={setOverlays}  
                 onClose={onClose} 

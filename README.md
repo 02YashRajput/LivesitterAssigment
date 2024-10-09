@@ -1,23 +1,12 @@
-
-  
-
 # User Documentation
-
-  
 
 ## 1. Fork and Clone the Repository
 
 1.  **Fork the Repository**:
 
-  
-
 - Go to the repository URL and click on the **Fork** button to create a copy under your GitHub account.
 
-  
-
 2.  **Clone the Forked Repository**:
-
-  
 
 - In your terminal, clone the repository to your local machine:
 
@@ -29,8 +18,6 @@ git clone <your-forked-repository-url>
 
 3.  **Navigate to the Project Directory**:
 
-  
-
 - Change into the project directory:
 
 ```bash
@@ -41,8 +28,6 @@ cd <LivesitterAssigment>
 
 ## 2. Set Up the Client (React)
 
-  
-
 1.  **Navigate to the Client Directory**:
 
 ```bash
@@ -51,11 +36,9 @@ cd client
 
 ```
 
-  
-
 2.  **Install Dependencies**:
 
-``` bash
+```bash
 
 npm install
 
@@ -74,8 +57,6 @@ npm start
 - The client will typically be available at `http://localhost:3000`
 
 ## 3. Set Up the Server (Flask)
-
-  
 
 1.  **Navigate to the Server Directory**:
 
@@ -130,39 +111,30 @@ python app.py
 ```
 
 - The server will typically run on `http://127.0.0.1:5000`.
-## 4. Inputting the RTSP URL with `ffmpeg`
 
-To process an RTSP stream using `ffmpeg`, you can use the following command in your terminal: 
-```bash 
-ffmpeg -analyzeduration 10000000 -probesize 10000000 -i "rtsp://rtspstream:36db633d016c43cca6ab857176ae6417@zephyr.rtsp.stream/pattern" \ -c:v copy -c:a aac -hls_time 10 -hls_list_size 0 -f hls static/output.m3u8
-```
-### Explanation of the Command:
+## 4. Inputting the RTSP URL
 
--   `-analyzeduration 10000000`: Sets the duration for analyzing the input stream (in microseconds).
--   `-probesize 10000000`: Sets the maximum size of the probe (in bytes) used to detect the input format.
--   `-i "rtsp://...`: Specifies the RTSP URL for the input stream.
--   `-c:v copy`: Copies the video codec without re-encoding.
--   `-c:a aac`: Encodes the audio to AAC.
--   `-hls_time 10`: Sets the segment duration for HLS output to 10 seconds.
--   `-hls_list_size 0`: Sets the playlist size to unlimited.
--   `-f hls`: Specifies the output format as HLS.
--   `static/output.m3u8`: The output file where the HLS playlist will be saved.
+1. Get your Testing URL:
 
-Make sure to replace the RTSP URL in the command with your desired stream URL before running the command.
+   - Obtain an RTSP URL for testing from an RTSP server. This can typically be a sample stream provided by the server for testing purposes.
 
+2. Convert it to HTTPS:
+
+   - Go to rtsp.me, and input your RTSP URL to convert it into a secure HTTPS URL. Once converted, you can use this HTTPS link as you would a standard RTSP URL for your streaming purposes.
+
+This converted URL will allow you to work with RTSP streams in environments where HTTPS is required.
 
 ## 5. Manage Overlays in Livestream Application
 
 This document provides an overview of managing overlays in the livestream application using React. The application allows users to add, edit, and delete overlays (text or images) that can be positioned and resized on a video stream.
 
-
 ### Table of Contents
 
 1.  [Introduction](#introduction)
 2.  [Components](#components)
-    -   [App Component](#app-component)
-    -   [Video Player Component](#video-player-component)
-    -   [Overlay Component](#overlay-component)
+    - [App Component](#app-component)
+    - [Video Player Component](#video-player-component)
+    - [Overlay Component](#overlay-component)
 3.  [State Management](#state-management)
 4.  [Adding Overlays](#adding-overlays)
 5.  [Editing Overlays](#editing-overlays)
@@ -181,15 +153,15 @@ The application allows users to overlay text and images on a video stream. Users
 
 The main component that handles the creation and management of overlays. It includes:
 
--   State variables for managing overlays, input types, and content.
--   Functions for adding, deleting, and fetching overlays from the server.
--   A form for user input to create overlays.
+- State variables for managing overlays, input types, and content.
+- Functions for adding, deleting, and fetching overlays from the server.
+- A form for user input to create overlays.
 
 ##### Key Functions
 
--   `addOverlay()`: Adds a new overlay to the state and sends it to the server.
--   `onClose()`: Removes an overlay based on its index.
--   `handleImageUpload()`: Converts uploaded images to Base64 format.
+- `addOverlay()`: Adds a new overlay to the state and sends it to the server.
+- `onClose()`: Removes an overlay based on its index.
+- `handleImageUpload()`: Converts uploaded images to Base64 format.
 
 #### Video Player Component
 
@@ -201,10 +173,10 @@ This component represents individual overlays. It allows users to edit the conte
 
 ##### Key Functions
 
--   `setPositions()`: Updates the overlay's position when dragged.
--   `setSize()`: Updates the overlay's size when resized.
--   `handleInput()`: Manages input changes in editable overlays.
--   `updateOverlay()`: Sends updated overlay data to the server.
+- `setPositions()`: Updates the overlay's position when dragged.
+- `setSize()`: Updates the overlay's size when resized.
+- `handleInput()`: Manages input changes in editable overlays.
+- `updateOverlay()`: Sends updated overlay data to the server.
 
 ### State Management
 
@@ -234,7 +206,7 @@ Overlays are styled using inline styles and CSS properties. The `Rnd` component 
 
 The application communicates with a backend server via Axios for managing overlays. The following endpoints are used:
 
--   **GET** `/`: Fetch existing overlays.
--   **POST** `/`: Add a new overlay.
--   **DELETE** `/:id`: Remove an overlay by ID.
--   **PUT** `/`: Update overlay data.
+- **GET** `/`: Fetch existing overlays.
+- **POST** `/`: Add a new overlay.
+- **DELETE** `/:id`: Remove an overlay by ID.
+- **PUT** `/`: Update overlay data.
