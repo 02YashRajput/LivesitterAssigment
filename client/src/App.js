@@ -9,7 +9,8 @@ function App() {
     const [inputContent, setInputContent] = useState(''); // State to track the content of the overlay
 
     // Function to add a new overlay
-    const addOverlay = async () => {
+    const addOverlay = async (e) => {
+        e.preventDefault();
         const newOverlay = {
             type: inputType, // 'text' or 'image'
             content: inputContent, // Text content or image URL

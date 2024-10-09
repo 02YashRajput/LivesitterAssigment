@@ -132,25 +132,119 @@ python app.py
 - The server will typically run on `http://127.0.0.1:5000`.
 ## 4. Inputting the RTSP URL with `ffmpeg`
 
-To process an RTSP stream using `ffmpeg`, you can use the following command in your terminal: 
-```bash 
-ffmpeg -analyzeduration 10000000 -probesize 10000000 -i "rtsp://rtspstream:36db633d016c43cca6ab857176ae6417@zephyr.rtsp.stream/pattern" \ -c:v copy -c:a aac -hls_time 10 -hls_list_size 0 -f hls static/output.m3u8
+To process an RTSP stream using `ffmpeg`, you can use the following command in your terminal:
+
+```bash
+
+ffmpeg  -probesize  100M  -analyzeduration  100M \
+
+-i "rtsp://rtspstream:fc8470ae3dfc2a8d513877a79db41200@zephyr.rtsp.stream/movie" \
+
+-c:v  libx264  -crf  20  -preset  fast \
+
+-c:a aac -b:a 128k \
+
+-f  hls \
+
+-hls_time 10 -hls_list_size 0 \
+
+-hls_segment_filename  "static/segment_%03d.ts" \
+
+static/output.m3u8
+
 ```
-### Explanation of the Command:
 
--   `-analyzeduration 10000000`: Sets the duration for analyzing the input stream (in microseconds).
--   `-probesize 10000000`: Sets the maximum size of the probe (in bytes) used to detect the input format.
--   `-i "rtsp://...`: Specifies the RTSP URL for the input stream.
--   `-c:v copy`: Copies the video codec without re-encoding.
--   `-c:a aac`: Encodes the audio to AAC.
--   `-hls_time 10`: Sets the segment duration for HLS output to 10 seconds.
--   `-hls_list_size 0`: Sets the playlist size to unlimited.
--   `-f hls`: Specifies the output format as HLS.
--   `static/output.m3u8`: The output file where the HLS playlist will be saved.
+1. ffmpeg:
 
-Make sure to replace the RTSP URL in the command with your desired stream URL before running the command.
+  
 
+	- The command-line tool used for processing video and audio files. FFmpeg can convert multimedia formats, stream media, and much more.
 
+2. -probesize 100M:
+
+  
+
+	- This option sets the maximum number of bytes that FFmpeg will read from the input file for probing purposes (to identify the stream format). Increasing this value helps FFmpeg analyze more data from the stream, which can improve detection accuracy, especially for complex or variable bitrate streams.
+
+3. -analyzeduration 100M:
+
+  
+
+	- Specifies the maximum duration (in microseconds) that FFmpeg will spend analyzing the input stream. A higher value allows FFmpeg to analyze more of the stream's initial data to better understand its characteristics. This can help when the stream has variable or non-standard properties.
+
+4. -i:
+
+  
+
+	- This flag indicates the input file or stream. In this case, it's an RTSP (Real-Time Streaming Protocol) URL. The URL specifies where the video stream is being sourced from.
+
+5. "rtsp://...":
+
+  
+
+	- The RTSP stream URL that provides the video source. It includes the protocol (rtsp://), a username and password (if required), and the address of the streaming server.
+
+6. -c:v libx264:
+
+  
+
+	- Specifies the video codec to use for encoding the output video. libx264 is a widely used codec for encoding video into H.264 format, which is known for its good quality and compression efficiency.
+
+7. -crf 20:
+
+  
+
+	- The Constant Rate Factor (CRF) value determines the quality of the output video. Lower values result in better quality, while higher values lead to lower quality. A value of 20 is generally considered to provide a good balance between quality and file size.
+
+8. -preset fast:
+
+  
+
+	- This option specifies the encoding speed and compression efficiency. The fast preset will encode video faster, but may result in slightly larger file sizes compared to slower presets. Available options range from ultrafast (least efficient) to veryslow (most efficient).
+
+9. -c:a aac:
+
+  
+
+	- Specifies the audio codec to use for encoding the output audio. aac (Advanced Audio Codec) is a common audio format used in streaming and is supported by most devices.
+
+10. -b:a 128k:
+
+  
+
+	- Sets the audio bitrate to 128 kbps. This defines the amount of data processed per second of audio, which affects sound quality. A bitrate of 128 kbps is typically a good balance for streaming.
+
+11. -f hls:
+
+  
+
+	- Specifies the output format. hls stands for HTTP Live Streaming, which is a popular streaming protocol used for delivering media over the internet.
+
+12. -hls_time 10:
+
+  
+
+	-	Sets the target duration of each HLS segment to 10 seconds. HLS breaks the video into small chunks, or segments, which allows for adaptive streaming.
+
+13. -hls_list_size 0:
+
+  
+
+	- This option controls the number of segments that are kept in the playlist. Setting it to 0 means that all segments will be kept in the playlist indefinitely. If set to a positive number, only that many segments will be retained.
+
+14. -hls_segment_filename "static/segment_%03d.ts":
+
+  
+
+	- Specifies the naming convention for the output segment files. The pattern %03d means that segment files will be named with a three-digit number (e.g., segment_000.ts, segment_001.ts, etc.). The output will be saved in the static directory.
+
+15. static/output.m3u8:
+
+  
+
+	- This is the output file name for the HLS playlist. The .m3u8 extension indicates that it's a UTF-8 encoded M3U playlist file, which is used by HLS to list the available video segments for streaming.
+
+  
 ## 5. Manage Overlays in Livestream Application
 
 This document provides an overview of managing overlays in the livestream application using React. The application allows users to add, edit, and delete overlays (text or images) that can be positioned and resized on a video stream.
